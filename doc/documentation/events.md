@@ -3,19 +3,16 @@ title: Events
 description: Handle SPF events and the navigation life cycle.
 ---
 
-
-SPF is designed to give developers enough flexibility during
-navigation to both control application logic and provide UI
-updates for things like progress bars.
+SPF 旨在导航期间为开发者提供足够的灵活性，来控制应用程序
+逻辑并提供UI更新，如进度条。
 
 
-## Navigation Life Cycle
+## 导航生命周期
 
-A basic event flow diagram follows and a more detailed
-explanation is below:
+基本事件流程图如下，更详细解释如下：
 
 
-           Navigation Life Cycle            Event Dispatched
+                   导航生命周期            事件已委派
                         +                                   
                         |                                   
                         |                                   
@@ -63,51 +60,45 @@ explanation is below:
                         v                                   
 
 
-## Event Descriptions
+## 事件描述
 
-All events in the [API][] are defined as [spf.Event][] objects.
-A list of the events and their descriptions follows:
+[API][] 里的所有API都被定义在 [spf.Event][] 对象里。
+事件列表及其描述如下：
 
 **`spfclick`**  
-Fired when handling a click on a valid link (e.g. one with a
-valid `spf-link` class or parent element).  Use as an early
-indication that navigation will happen or to provide element-
-level UI feedback.
+当处理一个有效链接的点击（例如一个
+有效的 `spf-link` 类或父元素）。尽早使用显示的说明会
+发生一个导航，或提供的元素级UI回调。
 
 **`spfhistory`**  
 Fired when handling a `popstate` history event, indicating the
 user has gone backward or forward; similar to `spfclick`.
 
+**`spfhistory`** 
+在处理 `popstate` 历史事件时发出，说明用户已经向后或向前；
+类似于`spfclick`。
+
 **`spfrequest`**  
-Fired before a request for navigation is sent.  Use to handle
-the beginning of navigation and provide global-level UI feedback
-(i.e. start a progress bar). This event is fired before a
-request is sent for all types of navigation: clicks,
-back/forward, and API calls.  (Note that this event is fired
-even if a response is fetched from cache and no actual network
-request is made.)
+在发送导航请求之前触发。用于处理导航的开始并提供全局级别的UI回调
+（即开始一个进度条）。此事件在一个请求被发送之前被触发，
+此请求是发送所有类型导航的请求：点击，后退/跳转和 API 调用。 
+（请注意，即使从缓存中获取响应，也没有实际的网络请求，此事件也被触发）。
 
 **`spfprocess`**  
-Fired when a response has been received, either from the network
-or from cache, before it is processed.  Use to update UI
-feedback (i.e. advance a progress bar) and dispose event
-listeners before content is updated.
+从网络或从缓存中接收到响应时触发和处理。用于更新 UI 回调（即预热进度条）
+并在内容更新之前处理事件监听器。
 
 **`spfdone`**  
-Fired after response processing is done.  Use to finalize UI
-feedback (i.e. complete a progress bar) and initialize event
-listeners after content is updated.
+响应处理完成后触发。用于完成 UI 回执（即完成进度条）并初始化内容
+更新后的事件监听器。
 
 
-## Callbacks and Cancellations
+## 回执和取消
 
-If manually starting navigation with [spf.navigate][], then
-instead of handling events you may pass callbacks in an object
-that conforms to the [spf.RequestOptions][] interface. Almost
-all events and callbacks can be canceled by calling
-`preventDefault` or returning `false`, respectively.  A list of
-the events, their corresponding callbacks, and their cancel
-action follows:
+如果用 [spf.navigate][] 手动开始导航，那么取代处理事件的是你可能会在
+一个实现自 [spf.RequestOptions][]  接口对象里传递一个回调。几乎所有
+事件和回调都可以通过调用 `preventDefault` 或返回 `false` 来
+取消。这些事件和它们对应的回调和它们的取消操作的列表如下：
 
 | Event        | Callback    | State                         | Cancel |
 |:-------------|:------------|:------------------------------|:-------|

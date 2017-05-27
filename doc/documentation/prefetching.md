@@ -2,22 +2,19 @@
 title: Prefetching
 description: Prefetch responses before they're requested.
 ---
-
-SPF is designed to enable fast navigation, and the best way to
-speed up a navigation request is to not make it all.
-Prefetching allows you to fetch responses before they are
-requested and store them in the [local cache][] until they are
-needed.  You can also prefetch [scripts and styles][resources]
-to prime the browser cache.
+SPF 旨在实现快速导航，提速一个导航请求的最好的方法是
+不要全部做请求。预取允许你在请求它们之前取得响应并存储
+它们到本地缓存里 [local cache][] 直到它们被需要时。你也可以
+预先获取脚本和样式 [scripts and styles][resources] 来提前告知
+浏览器缓存。
 
 
-## Prefetching requests
+## 预取请求
 
-Prefetching a response is done by calling the [spf.prefetch][]
-function, which behaves nearly identically to [spf.navigate][]
-and accepts the same [callbacks and cancellations][] when passed
-an object that conforms to the [spf.RequestOptions][] interface.
-A list of callbacks follows:
+通过调用 [spf.prefetch][] 函数来与获取响应，其行为几乎等同于 
+[spf.navigate][] ，并且当传递一个实现自 [spf.RequestOptions][]
+接口对象时它会接收同样的回调和退出信号 [callbacks and cancellations][] ：
+回调列表如下：
 
 | Callback    | State                         | Cancel |
 |:------------|:------------------------------|:-------|
@@ -25,39 +22,30 @@ A list of callbacks follows:
 | `onProcess` | Processing; Response Received | Abort  |
 | `onDone`    | Done                          |        |
 
-When SPF sends the prefetch request to the server, it will
-append the configurable identifier to the URL in the same manner
-as navigation; by default, this value will be `?spf=prefetch`.
+当 SPF 发出预取请求到服务器时，它会以相同的方式将可配置的
+标识符附加到 URL 作为导航，默认情况下，这个值为 `?spf=prefetch`。
 
-When the prefetched response has been received, SPF will place
-it in the local cache as eligible for one "new" navigation.
-After that one use, the cached response will only be eligible
-for "history" navigation.  However, if the `cache-unified`
-config value is set to `true`, then the prefetched response will
-be available for all navigations like other cached responses.
-For more information, see [when the cache is used][].
+当接收到预取的响应时，SPF 将放置它到本地缓存作为“新”导航的
+首选。使用之后，这个缓存的响应将只作为“历史”导航的首选。
+然而，如果 `cache-unified` 配置值设定为 `true`，那么
+预取响应可用于所有导航，如其他缓存响应。详见 [when the cache is used][] 。
 
 
-## Prefetching resources
+## 预取资源
 
-When SPF processes a prefetched response, it will prefetch any
-[resources][] to ensure the browser cache is primed.  Fetching
-JS and CSS files before they are needed makes future navigation
-faster.
+当 SPF 处理一个预取响应，它将预取任何资源 [resources][] 以确保
+浏览器缓存被初始化。在 JS 和 CSS 文件被需要之前预取它们以使
+未来的导航更快。
 
-To manually prefetch resources, the following API functions can
-be used:
+要手动预取资源，会用到下边的 API 函数：
 
 **`spf.script.prefetch(urls)`**  
-Prefetches one or more scripts; the scripts will be requested
-but not loaded.  See also the API reference for
-[spf.script.prefetch][].
+预取一个或多个脚本，此脚本将被请求而不会被加载。查看此
+API 手册 [spf.script.prefetch][] 。
 
 **`spf.style.prefetch(urls)`**  
-Prefetches one or more stylesheets; the stylesheets will be
-requested but not loaded.  See also the API reference for
-[spf.style.prefetch][].
-
+预取一个或多个样式，此样式将被请求但不会被加载。查看此
+API 手册 [spf.style.prefetch][] 。
 
 
 [local cache]: ./caching.md

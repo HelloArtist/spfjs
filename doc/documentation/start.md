@@ -5,16 +5,14 @@ description:
 ---
 
 
-## Get the code
+## 获取代码
 
-Before getting started, first **[download the code][]**.
+在开始之前，首先 **[下载代码][]**.
 
 
-## _Optional:_ Run the demo
+## _选项:_ 运行Demo
 
-If you cloned the project from GitHub or downloaded the source
-code, you can run the included demo application to see how
-everything works together in order to test out the framework:
+如果你从 Github 克隆的项目或下载的源代码，你可以运行包含在内的 demo 程序来测试看看我们的框架是怎么工作的：
 
 ```sh
 cd spfjs
@@ -22,32 +20,29 @@ npm install
 npm start
 ```
 
-You can then open <http://localhost:8080/> in your browser and
-check out the demo.
-
-> **Note:** You will need `npm` to install the development
-> dependencies and `python` to run the demo application.  You
-> can check if they are installed by running the following:
+然后你可以在浏览器打开 <http://localhost:8080/> 来查看 Demo 。
+> **注意:** 你这里需要用 `npm` 来安装开发依赖
+> 以及需要 `python` 来运行 demo 程序。
+> 你可以通过下边的命令来检查是否安装了它们：
 >
 > ```sh
 > npm --version
 > python --version
 > ```
 >
-> If you need to install `npm`, go to <https://nodejs.org/> and
-> click "Install" to get the installer.  If you need to install
-> `python`, go to <https://www.python.org/> and go to
-> "Downloads" to get the installer.
+> 如果你需要安装 `npm`, 进入 <https://nodejs.org/> 并
+> 点击 "Install" 来获得安装器。 如果你需要安装
+> `python`, 进入 <https://www.python.org/> 并进入
+> "Downloads" 来下载安装程序。
 
 
-## Enable SPF
+## 开启 SPF
 
-To add SPF to your site, you need to include the JS file and run
-`spf.init()` to enable the new functionality.
+要添加 SPF 到你的网站，你需要包含这个 JS 文件，并运行
+`spf.init()` 来开启新功能。
 
-After [downloading][] the code, copy the `spf.js` file to where
-you serve JS files for your site, add the script to your page,
-and initialize SPF:
+当 [下载][] 代码后，拷贝 `spf.js` 文件到存放 JS 文件的地方，
+添加脚本到你的网页，并初始化 SPF:
 
 ```html
 <script src="PATH-TO-YOUR-JS/spf.js"></script>
@@ -57,42 +52,37 @@ and initialize SPF:
 ```
 
 
-## Send requests
+## 发送请求
 
-SPF does not change your site's navigation automatically and
-instead uses progressive enhancement to enable dynamic
-navigation for certain links.  Just add a `spf-link` class to an
-`<a>` tag to activate SPF.
+SPF不会自动更改您的网站的导航 而是使用渐进增强来开启
+动态某些链接的导航。 只需要添加一个 `spf-link` 类到一个
+`<a>` 标签来激活 SPF。
 
-Go from static navigation:
+从静态导航出发：
 
 ```html
 <a href="/destination">Go!</a>
 ```
 
-to dynamic navigation:
-
+到动态导航：
 ```html
 <!-- Link enabled: a SPF request will be sent -->
 <a class="spf-link" href="/destination">Go!</a>
 ```
 
 
-## Return responses
+## 返回响应
 
-In static navigation, an entire HTML page is sent.  In dynamic
-navigation, only fragments are sent, using JSON as transport.
-When SPF sends a request to the server, it appends a
-configurable identifier to the URL so that your server can
-properly handle the request.  (By default, this will be
-`?spf=navigate`.)
+在静态导航中，会发送一个完整的HTML页面。在动态
+导航，只发送片段，使用JSON作为传输。
+当 SPF 向服务器发送请求时，它会追加一个
+可配置的标识符到 URL ，以便您的服务器可以
+正确处理请求。 (默认，会使用`?spf=navigate`.)
 
-In the following example, a common layout of upper masthead,
-middle content, and lower footer is used.  In dynamic
-navigation, only the fragment for the middle content is sent,
-since the masthead and footer don't change.
+在下面的例子中， 中间内容和下部页脚。在动态导航，只有中间
+内容的片段被发送， 因为标头和页脚不改变。
 
-Go from static navigation:
+从静态导航出发：
 
 `GET /destination`
 
@@ -112,7 +102,7 @@ Go from static navigation:
 </html>
 ```
 
-to dynamic navigation:
+到动态导航：
 
 `GET /destination?spf=navigate`
 

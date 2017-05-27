@@ -5,22 +5,21 @@ description:
 ---
 
 
-In dynamic navigation, SPF updates the page with content from
-the response. SPF will do this processing in the following
-order:
+在动态导航中，SPF 以响应的内容来更新页面。 
+SPF将以下边的顺序来进行处理：
 
-1. `title` — Update document title
-2. `url` — Update document URL
-3. `head` — Install early JS and CSS
-4. `attr` — Set element attributes
-5. `body` — Set element content and install JS and CSS
-6. `foot` — Install late JS and CSS
+1. `title` — 更新页面标题
+2. `url` — 更新页面 URL
+3. `head` — 安装之前的 JS 和 CSS
+4. `attr` — 设定元素属性
+5. `body` — 设定元素内容并安装 JS 和 CSS
+6. `foot` — 安装之后的 JS 和 CSS
 
-> **Note:** All fields are optional and the commonly needed
-> response values are `title`, `head`, `body`, and `foot`.
+> **注意:** 所有字段都是可选的，通常是都需要
+> 响应值是 `title`, `head`, `body`, 和 `foot`.
 
 
-A response is typically in the following format:
+响应通常采用以下格式：
 
 ```json
 {
@@ -42,13 +41,11 @@ A response is typically in the following format:
 }
 ```
 
-This pattern follows the general good practice of "styles in the
-head, scripts at the end of the body".  The "foot" field
-represents the "end of the body" section without requiring
-developers to create an explicit element.
+这个模板遵循一般的最佳实践“样式在头部，脚本在 body 底部”。
+"foot" 字段表示“ body 结束” 的部分，而无需开发者创建一个
+显示的元素。
 
-To update specific element attributes, the response format is as
-follows:
+要更新特定元素属性，响应格式为如下：
 
 ```json
 {
