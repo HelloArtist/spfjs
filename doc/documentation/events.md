@@ -68,7 +68,7 @@ SPF 旨在导航期间为开发者提供足够的灵活性，来控制应用程�
 **`spfclick`**  
 当处理一个有效链接的点击（例如一个
 有效的 `spf-link` 类或父元素）。尽早使用显示的说明会
-发生一个导航，或提供的元素级UI回调。
+发生一个导航，或提供的元素级UI回调。
 
 **`spfhistory`**  
 Fired when handling a `popstate` history event, indicating the
