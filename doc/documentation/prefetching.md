@@ -2,8 +2,8 @@
 title: Prefetching
 description: Prefetch responses before they're requested.
 ---
-SPF 旨在实现快速导航，提速一个导航请求的最好的方法是
-不要全部做请求。预取允许你在请求它们之前取得响应并存储
+SPF 旨在实现快速导航，提速一个导航请求的最好的方法是
+不要全部做请求。预取允许你在请求它们之前取得响应并存储
 它们到本地缓存里 [local cache][] 直到它们被需要时。你也可以
 预先获取脚本和样式 [scripts and styles][resources] 来提前告知
 浏览器缓存。
@@ -13,7 +13,7 @@ SPF 旨在实现快速导航，提速一个导航请求的最好的方法是
 
 通过调用 [spf.prefetch][] 函数来与获取响应，其行为几乎等同于 
 [spf.navigate][] ，并且当传递一个实现自 [spf.RequestOptions][]
-接口对象时它会接收同样的回调和退出信号 [callbacks and cancellations][] ：
+接口对象时它会接收同样的回调和退出信号 [callbacks and cancellations][] ：
 回调列表如下：
 
 | Callback    | State                         | Cancel |
@@ -34,7 +34,7 @@ SPF 旨在实现快速导航，提速一个导航请求的最好的方法是
 ## 预取资源
 
 当 SPF 处理一个预取响应，它将预取任何资源 [resources][] 以确保
-浏览器缓存被初始化。在 JS 和 CSS 文件被需要之前预取它们以使
+浏览器缓存被初始化。在 JS 和 CSS 文件被需要之前预取它们以使
 未来的导航更快。
 
 要手动预取资源，会用到下边的 API 函数：

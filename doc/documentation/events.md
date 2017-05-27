@@ -3,7 +3,7 @@ title: Events
 description: Handle SPF events and the navigation life cycle.
 ---
 
-SPF 旨在导航期间为开发者提供足够的灵活性，来控制应用程序
+SPF 旨在导航期间为开发者提供足够的灵活性，来控制应用程序
 逻辑并提供UI更新，如进度条。
 
 
@@ -82,7 +82,7 @@ user has gone backward or forward; similar to `spfclick`.
 在发送导航请求之前触发。用于处理导航的开始并提供全局级别的UI回调
 （即开始一个进度条）。此事件在一个请求被发送之前被触发，
 此请求是发送所有类型导航的请求：点击，后退/跳转和 API 调用。 
-（请注意，即使从缓存中获取响应，也没有实际的网络请求，此事件也被触发）。
+（请注意，即使从缓存中获取响应，也没有实际的网络请求，此事件也被触发）。
 
 **`spfprocess`**  
 从网络或从缓存中接收到响应时触发和处理。用于更新 UI 回调（即预热进度条）

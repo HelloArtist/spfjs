@@ -3,7 +3,7 @@ title: Resources
 description: Manage script and style loading.
 ---
 
-在 [Responses overview][responses] 中简要提到了，当 SPF 处理
+在 [Responses overview][responses] 中简要提到了，当 SPF 处理
 一个响应时，它会从 `head` 片段，任意 `body`片段和 `foot`
 片段 安装 JS 和 CSS。但是 SPF 有两种处理脚本和样式的方法：
 非管理和管理的。两者都在下面详述。
@@ -42,7 +42,7 @@ SPF分析脚本和样式的每个片段，提取它们，并通过将它们附�
 4.  用 HTML 代码 `consectetur adipisicing elit` 来更新 DOM id 为
 `element-id-b`的元素。
 5.  添加 `<script src="file.js"></script>` 到文档 `<head>` 
- 来加载 JS 文件 **并等待它执行完成**。
+ 来加载 JS 文件 **并等待它执行完成**。
 6.  添加 `<script>alert('hello');</script>` 到文档`<head>`
     来评估 JS。
 
@@ -54,28 +54,17 @@ SPF分析脚本和样式的每个片段，提取它们，并通过将它们附�
 > <script src="file.js" async></script>
 > ```
 
-无论你往页面或从页面发送这个响应，每次都会重复这些步骤。
+无论你往页面或从页面发送这个响应，每次都会重复这些步骤。
 
 
 ## 管理的资源
 
-However, a significant benefit of SPF is that only sections of
-the page are updated with each navigation instead of the browser
-performing a full reload.  That means — almost certainly — not
-every script and style needs to be executed or loaded during
-every navigation.
-
-Consider the following common pattern where two scripts are
-loaded per page: one containing common library code (e.g.
-jQuery) and a second containing page-specific code.   For
-example, a search page and an item page:
-
 然而，SPF 的一个重要的优势是对每次导航只更新页面的部分
-而不是让浏览器进行全部重载。这意味着几乎可以肯定在每次
+而不是让浏览器进行全部重载。这意味着几乎可以肯定在每次
 导航时不需要对所有脚本和样式进行执行或加载。
 
 考虑下边每个页面加载两个脚本的一般模式：一个包含普通的
-库的代码（如 jQuery），第二个包含特定于页面的代码。例如，
+库的代码（如 jQuery），第二个包含特定于页面的代码。例如，
 一个搜索页面和一个子项页面：
 
 搜索页面:
@@ -109,7 +98,7 @@ By applying this to all the scripts, a user can navigate back
 and forth between the two pages and only ever load a given file
 once:
 
-通过将它应用到所有脚本，用户可以在两个页面间前进和返回，
+通过将它应用到所有脚本，用户可以在两个页面间前进和返回，
 并且只加载给定的文件一次：
 
 搜索页面:
@@ -151,7 +140,7 @@ once:
 > 初始化和页面处理来避免内存泄漏和过期的事件监听器。
 
 > **注意：** 请参阅 [Versioning][versioning] 文档来为无缝发布进行
-> 脚本和样式版本间的自动切换。
+> 脚本和样式版本间的自动切换。
 
 
 

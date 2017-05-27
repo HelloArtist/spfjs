@@ -4,70 +4,62 @@
 [![Status][]](https://travis-ci.org/youtube/spfjs)
 [![InlineDocs][]](https://inch-ci.org/github/youtube/spfjs)
 
+结构化页面片段 （或简称 SPF）是来自 YouTube 的为快速导航和
+页面更新而生的轻量级的 JS 框架。
 
-Structured Page Fragments — or SPF for short — is a lightweight
-JS framework for fast navigation and page updates from YouTube.
+使用渐进增强和 HTML5，SPF 通过更新页面在导航中改变的部分
+而不是整个页面更新，来与你的网站交互来实现更快，更流畅的
+用户体验。SPF 提供一个响应格式来发送文档片段，它有一个强大
+的脚本和样式管理系统，一个内存级缓存，即时处理机制和其他
+更多功能。
 
-Using progressive enhancement and HTML5, SPF integrates with
-your site to enable a faster, more fluid user experience by
-updating just the sections of the page that change during
-navigation, not the whole page.  SPF provides a response format
-for sending document fragments, a robust system for script and
-style management, an in-memory cache, on-the-fly processing, and
-more.
-
-**Learn more at [youtube.github.io/spfjs][]**
+**在 [youtube.github.io/spfjs][] 深入学习**
 
 
-## Overview
+## 概述
 
-SPF allows you to leverage the benefits of a static initial page
-load, while gaining the performance and user experience benefits
-of dynamic page loads:
+SPF 允许你利用静态初始页面的优势，同时又获得动态页面加载的
+性能和用户体验的好处：
 
-**User Experience**  
-1. Get the fastest possible initial page load.  
-2. Keep a responsive persistent interface during navigation.  
+**用户体验**
+1. 获得最快的初始页面加载。
+2. 在导航期间保持响应式持久接口。
 
-**Performance**  
-1. Leverage existing techniques for static rendering.  
-2. Load small responses and fewer resources each navigation.  
+**性能**
+1. 利用现有的静态渲染技术。
+2. 每次导航加载小块响应和更少的资源文件。
 
-**Development**  
-1. Use any server-side language and template system.  
-2. Be productive by using the same code for static and dynamic
-   rendering.
+**开发**
+1. 使用任何服务端语言和模板系统。
+2. 有效的通过使用相同的代码来实现静态和动态渲染。
 
+## 下载
 
-## Download
-
-Install with [npm][]:
+通过 [npm][] 安装:
 
 ```sh
 npm install spf
 ```
 
-Install with [Bower][]:
+通过 [Bower][] 安装:
 
 ```sh
 bower install spf
 ```
 
-Or, see the [download page][] for options to download the latest
-release and link to minified JS from a CDN:
-
+或者，查看下载页面 [download page][] 来下载最新的发布和
+最小化 JS 的 CDN 链接：
 > [Download SPF](https://youtube.github.io/spfjs/download/)
 
 
-## Get Started
+## 开始
 
-The SPF client library is a single ~10K [UMD][] JS file with no
-dependencies.  It may be asynchronously delay-loaded.  All
-functions are exposed via the global `spf` object.
+SPF 客户端库是一个 ~10K [UMD][] 的 JS 文件，没有任何依赖。
+它可能是异步延迟加载的。所有函数通过 `spf` 对象公开。
 
-**Enable SPF**
+**开启 SPF**
 
-To add SPF to your site, include the JS file and run `spf.init()`.
+要添加 SPF 到你的网站，引入 JS 文件并运行 `spf.init()` 。
 
 ```html
 <script>
@@ -75,41 +67,37 @@ To add SPF to your site, include the JS file and run `spf.init()`.
 </script>
 ```
 
-**Send requests**
+**发送请求**
 
-SPF does not change your site's navigation automatically and
-instead uses progressive enhancement to enable dynamic
-navigation for certain links.  Just add a `spf-link` class to an
-`<a>` tag to activate SPF.
+SPF 不会自动改变你网站的导航，而是使用渐进增强来开启特定
+链接的动态导航。只需添加一个 `spf-link` 类到一个 `<a>`
+标签并激活 SPF 。
 
-Go from static navigation:
+从静态导航触发：
 
 ```html
 <a href="/destination">Go!</a>
 ```
 
-to dynamic navigation:
+到动态导航：
 
 ```html
 <!-- Link enabled: a SPF request will be sent -->
 <a class="spf-link" href="/destination">Go!</a>
 ```
 
-**Return responses**
+**返回响应**
 
-In static navigation, an entire HTML page is sent.  In dynamic
-navigation, only fragments are sent, using JSON as transport.
-When SPF sends a request to the server, it appends a
-configurable identifier to the URL so that your server can
-properly handle the request.  (By default, this will be
-`?spf=navigate`.)
+在静态导航中，会发送一个完整的HTML页面。在动态
+导航，只发送片段，使用JSON作为传输。
+当 SPF 向服务器发送请求时，它会追加一个
+可配置的标识符到 URL ，以便您的服务器可以
+正确处理请求。 (默认，会使用`?spf=navigate`.)
 
-In the following example, a common layout of upper masthead,
-middle content, and lower footer is used.  In dynamic
-navigation, only the fragment for the middle content is sent,
-since the masthead and footer don't change.
+在下面的例子中， 中间内容和下部页脚。在动态导航，只有中间
+内容的片段被发送， 因为标头和页脚不改变。
 
-Go from static navigation:
+从静态导航出发：
 
 `GET /destination`
 
@@ -129,7 +117,7 @@ Go from static navigation:
 </html>
 ```
 
-to dynamic navigation:
+到动态导航：
 
 `GET /destination?spf=navigate`
 
@@ -144,31 +132,37 @@ to dynamic navigation:
 }
 ```
 
-See the [documentation][] for complete information.
+要了解全面的信息请查看文档 ：
+
+01. [开始](https://github.com/TonyGao/spfjs/blob/master/doc/documentation/start.md)
+02. [响应](https://github.com/TonyGao/spfjs/blob/master/doc/documentation/responses.md)
+03. [事件](https://github.com/TonyGao/spfjs/blob/master/doc/documentation/events.md)
+04. [资源](https://github.com/TonyGao/spfjs/blob/master/doc/documentation/resources.md)
+05. [版本化](https://github.com/TonyGao/spfjs/blob/master/doc/documentation/versioning.md)
+06. [缓存化](https://github.com/TonyGao/spfjs/blob/master/doc/documentation/caching.md)
+07. [预取化](https://github.com/TonyGao/spfjs/blob/master/doc/documentation/prefetching.md)
+
+## 浏览器支持
+
+要使用动态导航，SPF 需要 HTML5 历史记录 API。对此所有
+当前的浏览器都有广泛的支持，包括 Chrome 5+，Firefox 4+
+和IE 10+。查看完整的浏览器兼容列表，请看 [Can I Use][] 。
+基础功能，如 AJAX 样式页面更新和脚本/样式加载，有更
+广泛地支持，如 IE 8+。
 
 
-## Browser Support
 
-To use dynamic navigation, SPF requires the HTML5 History API.
-This is broadly supported by all current browsers, including
-Chrome 5+, Firefox 4+, and IE 10+.  See a full browser
-compatibility table at [Can I Use][].  Underlying functionality,
-such as AJAX-style page updates and script/style loading, is
-more broadly supported by IE 8+.
+## 获取帮助
 
+想针对 SPF 给予反馈，评论或提问，发送至 <spfjs@googlegroups.com>.
 
-## Get Help
+文件 Bug 或特性需求，上  [GitHub][].
 
-Send feedback, comments, or questions about SPF to
-<spfjs@googlegroups.com>.
-
-File bugs or feature requests at [GitHub][].
-
-Join our [mailing list][] and follow [@spfjs][] on Twitter for
-updates.
+加入我们的邮件列表 [mailing list][] 并在 Twitter 上粉我们 [@spfjs][]
+以了解最新消息。
 
 
-## License
+## 协议
 
 MIT  
 Copyright 2012-2017 Google, Inc.
